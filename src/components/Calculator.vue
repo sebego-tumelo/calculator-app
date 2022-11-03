@@ -73,7 +73,7 @@ export default {
             this.setPrevious()
         },
         devide(){
-            this.operator = (a,b) => a / b
+            this.operator = (a,b) => b / a
             this.setPrevious()
         },
         equal(){
