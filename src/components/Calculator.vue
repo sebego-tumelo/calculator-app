@@ -65,7 +65,7 @@ export default {
             this.setPrevious()
         },
         minus(){
-            this.operator= (a,b) => a - b
+            this.operator= (a,b) => b - a
             this.setPrevious()
         },
         times(){
