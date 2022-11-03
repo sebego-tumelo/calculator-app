@@ -28,7 +28,7 @@
 export default {
     data(){
         return{
-            current: '200',
+            current: '',
             operator: null,
             previous: null,
             operatorClicked: false
