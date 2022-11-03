@@ -93,7 +93,7 @@ export default {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-auto-rows: minmax(50px, auto);
-        width: 400px;
+        /* width: 400px; */
         margin: 0 auto;
         font-size: 40px;
     }
