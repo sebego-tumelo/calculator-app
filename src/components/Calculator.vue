@@ -52,11 +52,22 @@ export default {
             this.current = parseFloat(this.current)/100
         },
         append(number){
-            if(this.operatorClicked){
-                // this.current = ''
-                this.operatorClicked = false
+
+            if(this.current){
+                if(this.operators.includes(this.current.charAt(this.current.length - 1)) && this.operators.includes(number)){
+
+                    // dont append operand, but change the last character in current to number
+                    this.current = this.current.slice(0, -1) + number
+                    }else{
+
+                        this.current = `${this.current}${number}`
+                    }
+
+            }else{
+
+                this.current = `${this.current}${number}`
+
             }
-            this.current = `${this.current}${number}`
         },
         dot(){
             if(this.current.indexOf('.') === -1){
@@ -153,7 +164,7 @@ export default {
 
                     while(pointer >= 0){
 
-                        let char = this.operators.find(this.current.charAt(pointer))
+                        let char = this.operators.includes(this.current.charAt(pointer))
                         startPos = pointer
                         
                         if(char){
@@ -275,7 +286,7 @@ export default {
                             if(n != '#'){
 
                                 currentOp = n
-                                opIndex = endIndex + 1
+                                opIndex = endIndex
                                 endIndex++
                             }else{
 
@@ -304,6 +315,7 @@ export default {
                     console.log('current Op: '+currentOp)
                     console.log('start Index: '+startIndex)
                     console.log('end Index: '+endIndex)
+                    console.log('op Index: '+opIndex)
                     console.log(' ')
                 }
             }
