@@ -44,6 +44,11 @@ export default {
     methods:{
         clear(){
             this.current = ''
+            this.opPointer = 0;
+
+            this.lockOperand.locked = false
+            this.lockOperand.operator = ''
+            this.lockOperand.operand = ''
         },
         sign(){
             this.current = this.current.charAt(0) === '-' ? this.current.slice(1) : `-${this.current}`
