@@ -71,6 +71,8 @@ export default {
 
             let result = ''
 
+            this.opPointer = 0
+
             // is the current operator contained in current
             this.operators.every( op => {
                 
@@ -110,7 +112,7 @@ export default {
                 }
 
                 this.current = this.current.replaceBetween(obj.startIndex, obj.endIndex+1, result)
-
+                console.log('answer: ' + result)
                 return 1
             }
         },
@@ -227,6 +229,13 @@ export default {
 
                     }else{
 
+                        if(a == ''){
+
+                            a = a + n
+                            endIndex++
+                            continue
+                        }
+
                         // an operator
                         operatorChecked = true
 
@@ -287,6 +296,7 @@ export default {
 
                     }
 
+                    console.log('cuurent: '+this.current)
                     console.log('n: '+n)
                     console.log('index: '+endIndex)
                     console.log('a: '+a)
