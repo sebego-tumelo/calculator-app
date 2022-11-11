@@ -75,7 +75,22 @@ export default {
             }
         },
         dot(){
-            if(this.current.indexOf('.') === -1){
+
+            // determine if the last operant already a '.'
+
+            let lastOperand = ''
+            this.operators.forEach(el => {
+
+                if(this.current.includes(el)){
+
+                    lastOperand = this.current.split(el)
+                    lastOperand = lastOperand[lastOperand.length-1]
+                }
+            })
+
+            if(!lastOperand) lastOperand = this.current 
+
+            if(!lastOperand.includes('.') && this.current.charAt(this.current.length - 1) != '.'){
                 this.append('.')
             }
         },
