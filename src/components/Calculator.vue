@@ -59,18 +59,26 @@ export default {
         append(number){
 
             if(this.current){
-                if(this.operators.includes(this.current.charAt(this.current.length - 1)) && this.operators.includes(number)){
+                if(this.operators.includes(this.current.charAt(this.current.length - 1)) && this.operators.includes(number) && this.current.length > 1){
 
                     // dont append operand, but change the last character in current to number
                     this.current = this.current.slice(0, -1) + number
-                    }else{
+                }else if((this.current.charAt(0) == '-') && (this.current.length == 1)){
+
+                        if(!this.operators.includes(number)) this.current = `${this.current}${number}`
+                }else{
+
 
                         this.current = `${this.current}${number}`
-                    }
+                }
 
             }else{
 
-                this.current = `${this.current}${number}`
+                // if the first character is not a '-' operator, dont append
+                // if(!this.current) this.current = number 
+
+                if(!this.operators.includes(number) || (number == '-')) this.current = `${this.current}${number}`
+                
 
             }
         },
@@ -160,6 +168,7 @@ export default {
             }
 
             this.current = this.current + '#'
+
 
             this.store.forEach(el => {
 
